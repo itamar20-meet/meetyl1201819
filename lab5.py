@@ -133,7 +133,7 @@ a.print_info()
 b = Person("Jake",15, "pizza")
 b.define_color()
 b.print_info()
-
+'''
 class Bear():
     def __init__(self, name):
       self.name = name
@@ -178,4 +178,4 @@ my_cat = Cat("Salem",8)
 my_cat.birthday()
 # what I want: my cat to celebrate its 8th birthday (and all the 
 # birthdays that come before that)
-'''
+
