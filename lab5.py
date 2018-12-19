@@ -1,30 +1,19 @@
 
-import Tkinter as tk 
-import tkSimpleDialog as simpledialog
-#greeting = simpledialog.askstring("Input", "Hello, possible pirate! What's the password?", parent=tk.Tk().withdraw())
-#if greeting in ["Arrr!"]:
- #   print("Go away, pirate.")
-#else:
-#	print("Greetings, hater of pirates!")
+import tkinter as tk 
+import tkinter as simpledialog
+greeting = simpledialog.askstring("Input", "Hello, possible pirate! What's the password?", parent=tk.Tk().withdraw())
+if greeting in ["Arrr!"]:
+    print("Go away, pirate.")
+else:
+	print("Greetings, hater of pirates!")
 
-# A time traveler has suddenly appeared in your classroom!
+ #A time traveler has suddenly appeared in your classroom!
 
-# Create a variable representing the traveler's
-# year of origin (e.g., year = 2000)
-# and greet our strange visitor with a different message
-# if he is from the distant past (before 1900),
-# the present era (1900-2020) or from the far future (beyond 2020).
-
-
-
-# A time traveler has suddenly appeared in your classroom!
-
-# Create a variable representing the traveler's
-# year of origin (e.g., year = 2000)
-# and greet our strange visitor with a different message
-# if he is from the distant past (before 1900),
-# the present era (1900-2020) or from the far future (beyond 2020).
-
+ #Create a variable representing the traveler's
+ # year of origin (e.g., year = 2000)
+ # and greet our strange visitor with a different message
+ # if he is from the distant past (before 1900),
+ # the present era (1900-2020) or from the far future (beyond 2020).
 
 #year = 0
 #year == int(simpledialog.askstring("Input" ,"Greetings! What is your year of origin?", parent=tk.Tk().withdraw()))
@@ -166,16 +155,16 @@ cake = Cake("chocolate")
 class Cat():
 	def __init__(self,name,age):
 		self.name = name
-		self.age = 0 
+		self.age = age 
 
-	def birthday(self):
+	def birthday(self,age):
 		self.age += 1
 		if self.age >= 100 :
 			print("Dong dong, the cat is dead!")
 		else:
 			print(self.name +" hasing its "+ str(self.age) + " birthday!")
 my_cat = Cat("Salem",8)
-my_cat.birthday()
+my_cat.birthday(8)
 # what I want: my cat to celebrate its 8th birthday (and all the 
 # birthdays that come before that)
 
