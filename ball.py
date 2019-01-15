@@ -5,17 +5,17 @@ from turtle import Turtle
 
 class Ball(Turtle):
 	"""docstring for Ball"""
-	def __init__(self, x, y ,dx, dy,r, color,shape):
+	def __init__(self, x, y ,dx, dy,r, color):
 		Turtle.__init__(self)
+		turtle.penup()
+		turtle.goto(x, y)
 		self.x = x
 		self.y = y
 		self.dx = dx
 		self.dy = dy
 		self.r = r
-		self.color("red")
+		self.color(color)
 		self.shape("circle")
-		turtle.penup()
-		turtle.goto(x, y)
 		turtle.shapesize(r/10)
 		
 	def move(self,screen_width, screen_height):
