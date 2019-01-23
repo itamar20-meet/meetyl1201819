@@ -15,8 +15,10 @@ screen_width = turtle.getcanvas().winfo_width()/2
 screen_height = turtle.getcanvas().winfo_height()/2
 
 BALLS = []
-
-my_ball = Ball(0,0,2,2,50,"red")
+Screen=turtle.Screen()
+Screen.register_shape("park.gif")
+Screen.bgpic("park.gif")
+my_ball = Ball(0,0,2,2,70,"red")
 
 
 NUMBER_OF_BALLS = 5
@@ -36,7 +38,19 @@ for i in range(NUMBER_OF_BALLS):
 	color =(random.random(), random.random(), random.random())
 	ball = Ball(x,y,dx,dy,radius,color)
 	BALLS.append(ball)
-
+def change_ball(ball_b):
+	
+	ball_b.x = x
+	ball_b.y = y
+	ball_b.r = radius
+	ball_b.penup()
+	ball_b.goto(x,y)
+	ball_b.color(color)
+	ball_b.shape("circle")
+	ball_b.shapesize(radius/10)
+	ball_b.dx = dx
+	ball_b.dy =dy
+					
 turtle.update()
 def move_all_balls():
 
@@ -72,29 +86,12 @@ def check_all_ball_collsion():
 				color =(random.random(), random.random(), random.random())
 				if radius1 >= radius2 :
 					ball_a.r+= 1
-					ball_b.x = x
-					ball_b.y = y
-					ball_b.r = radius
-					ball_b.penup()
-					ball_b.goto(x,y)
-					ball_b.color(color)
-					ball_b.shape("circle")
-					ball_b.shapesize(radius/10)
-					ball_b.dx = dx
-					ball_b.dy =dy
+					ball_a.shapesize(ball_a.r/10)
+					change_ball(ball_b)
 				elif radius1< radius2 :
 					ball_b.r+= 1
-					ball_a.x = x
-					ball_a.y = y
-					ball_a.r = radius
-					ball_a.penup()
-					ball_a.goto(x,y)
-					ball_a.color(color)
-					ball_a.shape("circle")
-					ball_a.shapesize(radius/10)
-					ball_a.dx = dx
-					ball_a.dy =dy
-
+					ball_b.shapesize(ball_b.r/10)
+					change_ball(ball_a)
 def check_my_ball_collsion():
 	for ball_c in BALLS :
 		if collide(my_ball,ball_c):
@@ -104,26 +101,22 @@ def check_my_ball_collsion():
 					 return False
 				else :
 					my_ball.r+= 1
-					ball_c.x = x
-					ball_c.y = y
-					ball_c.r = radius
-					ball_c.penup()
-					ball_c.goto(x,y)
-					ball_c.color(color)
-					ball_c.shape("circle")
-					ball_c.shapesize(radius/10)
-					ball_c.dx = dx
-					ball_c.dy =dy
+					my_ball.shapesize(radius3/10)
+					change_ball(ball_c)
 				
 	return True
 	
-			
+
+
+	
+win = False		
 def movearound(event):
 	x = event.x - screen_width
 	y = screen_height - event.y
 	my_ball.goto(x,y)
 
 turtle.getcanvas().bind("<Motion>", movearound)
+
 turtle.listen()
 
 
@@ -133,7 +126,11 @@ while RUNNING == True:
 	move_all_balls()
 	check_all_ball_collsion()
 	RUNNING = check_my_ball_collsion()
+	if my_ball.r >= 350 :
+		win = True
 	turtle.update()
 	time.sleep(SLEEP)
+	if win  == True :
+		break
 
 
